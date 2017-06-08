@@ -6,7 +6,8 @@ import {
     Animated,
     Dimensions,
     StyleSheet,
-    PanResponder
+    PanResponder,
+    StatusBar
 } from 'react-native';
 
 import {Provider} from 'react-redux';
@@ -17,6 +18,7 @@ import Employee from './components/Employee';
 
 const {width, height} = Dimensions.get('window');
 let CIRCLE_RADIUS = 160;
+let AUDIO_SIZE = 60;
 let Window = Dimensions.get('window');
 
 export default class App extends Component{
@@ -105,6 +107,11 @@ export default class App extends Component{
     render(){
         return(
             <View style={styles.mainContainer}>
+                <StatusBar
+                    backgroundColor="blue"
+                    barStyle="light-content"
+                    hidden={true}
+                />
                 <View 
                     onLayout={this.setDropZoneValues_top.bind(this)}
                 style={[{flex: 1},styles.dropZone]}>
@@ -116,7 +123,9 @@ export default class App extends Component{
                 style={[{flex: 1},styles.dropZone]}>
                     <Text style={styles.text}>Drop me here!</Text>
                 </View>
-
+                <View style={styles.audio}>
+                    <Text style={styles.audio_text}>Play</Text>
+                </View>
                 {this.renderDraggable()}
             </View>
         );
@@ -153,6 +162,21 @@ let styles = StyleSheet.create({
         backgroundColor     : '#1abc9c',
         width               : CIRCLE_RADIUS*2,
         height              : CIRCLE_RADIUS*2,
-        borderRadius        : CIRCLE_RADIUS
+        //borderRadius        : CIRCLE_RADIUS
+    },
+    audio: {
+        backgroundColor: 'red',
+        position: 'absolute',
+        top: (Window.height - AUDIO_SIZE)/2,
+        right: 0,
+        height: AUDIO_SIZE,
+        width: AUDIO_SIZE,
+        zIndex: 1,
+        alignItems: 'center',
+        justifyContent: 'center'
+    },
+    audio_text: {
+        color: '#fff',
+        fontSize: 18
     }
 });
