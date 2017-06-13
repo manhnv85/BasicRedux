@@ -20,6 +20,8 @@ const {width, height} = Dimensions.get('window');
 let CIRCLE_RADIUS = 160;
 let AUDIO_SIZE = 60;
 let Window = Dimensions.get('window');
+import Quiz from './Quiz';
+import Sample from './sample';
 
 export default class App extends Component{
     constructor(props){
@@ -104,7 +106,19 @@ export default class App extends Component{
         this.setState({dropZoneValues_top: event.nativeEvent.layout})
     }
 
+    render3(){
+        return(
+            <Sample />
+        );
+    }
+
     render(){
+        return(
+            <Quiz />
+        );
+    }
+
+    render2(){
         return(
             <View style={styles.mainContainer}>
                 <StatusBar
