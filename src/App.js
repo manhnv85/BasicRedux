@@ -22,6 +22,7 @@ let AUDIO_SIZE = 60;
 let Window = Dimensions.get('window');
 import Quiz from './Quiz';
 import Sample from './sample';
+import Playground from './Playground';
 
 export default class App extends Component{
     constructor(props){
@@ -114,7 +115,7 @@ export default class App extends Component{
 
     render(){
         return(
-            <Quiz />
+            <Playground />
         );
     }
 
